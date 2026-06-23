@@ -3,220 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Airレジ週次レポート 自動反映 — 設置指南書</title>
+<title>CHILLAXY 社内共有ドキュメント</title>
 <style>
-  :root{
-    --navy:#091F42; --black:#242424; --gray:#D3D3D3; --white:#FFFFFF;
-    --pink-pale:#F9CFD1; --coral:#F5A1A1; --deep:#CC2055;
-    --A:24px; --A-half:12px; --A-q:6px; --A1_5:36px; --A2:48px;
-    --line:#E2E5EA; --mono:"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
-  }
+  :root{ --navy:#091F42; --black:#242424; --white:#FFFFFF; --gray:#D3D3D3;
+    --coral:#F5A1A1; --deep:#CC2055; --line:#E2E5EA;
+    --A:24px; --A-half:12px; --A-q:6px; --A1_5:36px; --A2:48px; }
   *{box-sizing:border-box;}
   body{ margin:0; background:#EDEFF2; color:var(--black);
-    font-family:system-ui,-apple-system,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
-    line-height:1.8; font-size:15px; -webkit-text-size-adjust:100%; }
-  .page{ max-width:840px; margin:var(--A2) auto; background:var(--white); }
-  header{ background:var(--navy); color:var(--white); padding:var(--A2) var(--A2) var(--A1_5); }
+    font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif; line-height:1.8; }
+  .page{ max-width:760px; margin:var(--A2) auto; background:var(--white); }
+  header{ background:var(--navy); color:var(--white); padding:var(--A2); }
   header .kicker{ font-size:12px; letter-spacing:.18em; color:var(--coral); margin:0 0 var(--A-half); }
-  header h1{ font-size:26px; line-height:1.5; margin:0 0 var(--A-half); font-weight:800; }
-  header .meta{ font-size:13px; color:var(--gray); margin:0; }
-  header .meta b{ color:var(--white); font-weight:600; }
+  header h1{ font-size:23px; margin:0; font-weight:800; }
   main{ padding:var(--A1_5) var(--A2) var(--A2); }
-  section{ margin:0 0 var(--A1_5); }
-  h2{ font-size:18px; color:var(--navy); font-weight:800; margin:0 0 var(--A-half);
-    padding:0 0 var(--A-q); border-bottom:2px solid var(--navy); letter-spacing:.02em; }
-  h2 .no{ color:var(--deep); margin-right:.5em; }
-  h3{ font-size:15px; color:var(--navy); font-weight:700; margin:var(--A) 0 var(--A-q); }
-  p{ margin:0 0 var(--A-half); text-align:left; }
-  ul,ol{ margin:0 0 var(--A-half); padding-left:1.4em; } li{ margin:0 0 var(--A-q); }
-  b,strong{ color:var(--navy); }
-  .em{ color:var(--deep); font-weight:700; }
-  .badge{ display:inline-block; background:var(--deep); color:var(--white); font-size:11px; font-weight:700;
-    padding:2px 8px; letter-spacing:.04em; vertical-align:middle; }
-  .badge.navy{ background:var(--navy); }
-  /* フロー図 */
-  .flow{ margin:var(--A-half) 0 0; }
-  .flow .step{ background:#F5F6F8; border:1px solid var(--line); padding:var(--A-half) var(--A); }
-  .flow .step .t{ font-weight:700; color:var(--navy); }
-  .flow .step .who{ float:right; font-size:11px; }
-  .flow .step .d{ font-size:13.5px; color:#4a4f57; margin-top:2px; clear:both; }
-  .flow .arrow{ text-align:center; color:var(--navy); font-size:14px; padding:var(--A-q) 0; }
-  .flow .end{ border-left:3px solid var(--deep); }
-  table{ border-collapse:collapse; width:100%; margin:var(--A-half) 0; font-size:13.5px; }
-  th,td{ text-align:left; padding:var(--A-q) var(--A-half); border-bottom:1px solid var(--line); vertical-align:top; }
-  thead th{ background:var(--navy); color:var(--white); font-weight:600; border-bottom:none; }
-  tbody tr:nth-child(even){ background:#F7F8FA; }
-  td b{ color:var(--navy); }
-  code{ font-family:var(--mono); font-size:12.5px; background:#F0F2F5; padding:1px 5px; color:#22303f; }
-  pre{ font-family:var(--mono); font-size:12.5px; background:#F5F6F8; border:1px solid var(--line);
-    padding:var(--A-half) var(--A); overflow:auto; line-height:1.6; margin:var(--A-half) 0; }
-  pre code{ background:none; padding:0; }
-  .note{ background:var(--pink-pale); padding:var(--A-half) var(--A); font-size:13.5px; margin:var(--A-half) 0; }
-  .note b{ color:var(--deep); }
-  .timeline{ margin:var(--A-half) 0; }
-  .timeline .row{ display:flex; gap:var(--A-half); padding:var(--A-half) 0; border-bottom:1px solid var(--line); }
-  .timeline .row:last-child{ border-bottom:none; }
-  .timeline .day{ flex:0 0 96px; font-weight:800; color:var(--navy); }
-  .timeline .act{ flex:1; }
-  .timeline .act .who{ font-size:11px; color:#fff; background:var(--navy); padding:1px 7px; margin-right:6px; }
-  .timeline .act .who.eri{ background:var(--deep); }
+  .card{ display:block; text-decoration:none; color:inherit; border:1px solid var(--line);
+    padding:var(--A); margin:0 0 var(--A-half); }
+  .card:hover{ border-color:var(--navy); }
+  .card .t{ font-size:16px; font-weight:800; color:var(--navy); }
+  .card .d{ font-size:13.5px; color:#4a4f57; margin-top:var(--A-q); }
+  .card .go{ color:var(--deep); font-size:13px; font-weight:700; margin-top:var(--A-q); }
   footer{ padding:var(--A) var(--A2) var(--A2); border-top:1px solid var(--line); color:#6b7178; font-size:12px; }
-  @media (max-width:640px){ .page{ margin:0; } header,main{ padding-left:var(--A); padding-right:var(--A); }
-    .timeline .day{ flex-basis:64px; } }
-  @media print{ body{ background:var(--white); } .page{ margin:0; max-width:none; }
-    section{ break-inside:avoid; } pre,table,.flow,.timeline{ break-inside:avoid; } }
+  @media (max-width:640px){ .page{ margin:0; } }
 </style>
 </head>
 <body>
 <div class="page">
 <header>
-  <p class="kicker">CHILLAXY ／ 直営店向け 設置ドキュメント</p>
-  <h1>Airレジ週次レポート 自動反映<br>設置指南書</h1>
-  <p class="meta">宛先：<b>稜也さん（直営統括）</b>　／　作成：絵里（2026-06-23・伊勢佐木店で検証済み）<br>
-  目的：各店の週次レポートシートに「日別売上」「商品別TOP5」を<b>Airレジの会計明細CSVから機械反映</b>し、現場は<b>気づき・改善点・提案だけ</b>を書けばよくする。</p>
+  <p class="kicker">CHILLAXY</p>
+  <h1>社内共有ドキュメント</h1>
 </header>
 <main>
-
-<!-- 0 -->
-<section>
-  <h2><span class="no">0</span>結論（全体像）</h2>
-  <div class="flow">
-    <div class="step"><span class="who"><span class="badge navy">稜也</span></span><div class="t">Airレジ管理画面</div><div class="d">① 週次で「会計明細」CSVを<b>1つだけ</b>エクスポート（対象週）</div></div>
-    <div class="arrow">▼</div>
-    <div class="step"><span class="who"><span class="badge navy">稜也</span></span><div class="t">稜也さんのMac（Claude Code）</div><div class="d">② 転記コマンドを実行（月曜昼まで）。当該週ブロックが無ければ自動作成して数字を反映</div></div>
-    <div class="arrow">▼</div>
-    <div class="step"><div class="t">各店の週次レポートシート</div><div class="d">日別売上（売上・客数）＋ 商品別TOP5（売上・販売数）が入る</div></div>
-    <div class="arrow">▼</div>
-    <div class="step"><span class="who"><span class="badge navy">各店</span></span><div class="t">気づき・改善点・提案を手入力</div><div class="d">③ 火曜昼MTGまでに各店が文章部分を完成</div></div>
-    <div class="arrow">▼</div>
-    <div class="step end"><span class="who"><span class="badge">絵里</span></span><div class="t">まとめシート作成・印刷 → 差し入れ・手紙と郵送</div><div class="d">④ 水曜。集約は絵里が担当（稜也・各店の作業範囲外）</div></div>
-  </div>
-  <ul style="margin-top:var(--A-half)">
-    <li><b>数字は機械反映、文章は人。</b>各店に任せるのは「気づき・改善・提案」だけ。週ブロック作成も数字も任せない。</li>
-    <li><b>CSVは会計明細1つだけ</b>。日別売上も商品別TOP5も会計明細から出せる（検証済み）。</li>
-    <li><b>作業者は稜也さん（直営統括）に集約</b>。担当範囲は「各店シートへの数字反映まで」。集約スプレッドシート（差し入れまとめ）は絵里。</li>
-  </ul>
-</section>
-
-<!-- 1 -->
-<section>
-  <h2><span class="no">1</span>週次タイムライン・役割分担</h2>
-  <div class="timeline">
-    <div class="row"><div class="day">月曜 昼まで</div><div class="act"><span class="who">稜也</span>会計明細CSVをエクスポート → コマンドで各店シートに<b>日別売上・TOP5を反映</b>（週ブロックが無ければ自動作成）</div></div>
-    <div class="row"><div class="day">〜火曜 昼</div><div class="act"><span class="who">各店</span><b>気づき・改善点・提案</b>を各店シートに手入力</div></div>
-    <div class="row"><div class="day">火曜 昼</div><div class="act"><span class="who">全員</span>MTGで<b>先週の振り返り</b></div></div>
-    <div class="row"><div class="day">水曜</div><div class="act"><span class="who eri">絵里</span>出揃ったものを<b>まとめシート作成・印刷</b> → 差し入れ・手紙と郵送</div></div>
-  </div>
-  <div class="note"><b>稜也さんの担当はここまで</b>：各店レポートシートへの数字反映。集約（まとめ・印刷・郵送）は絵里が行うので対象外。</div>
-</section>
-
-<!-- 2 -->
-<section>
-  <h2><span class="no">2</span>なぜこの設計か（設計判断）</h2>
-  <table>
-    <thead><tr><th style="width:24%">論点</th><th style="width:32%">決定</th><th>理由</th></tr></thead>
-    <tbody>
-      <tr><td>取り出すCSV</td><td><b>会計明細のみ（1つ）</b></td><td>会計明細を営業日締めで集計すると日別売上が正規データと完全一致。売上集計CSVは不要</td></tr>
-      <tr><td>反映先</td><td><b>各店の週次レポートシート</b></td><td>稜也さんの担当は各店シートまで。集約シートは絵里</td></tr>
-      <tr><td>実行アカウント</td><td><b>責任者（稜也さん）のGoogleアカウント</b></td><td>各店シートへのアクセス権を統括の権限で担保。個人PC/トークンに依存させない</td></tr>
-      <tr><td>週ブロック</td><td><b>無ければ自動作成</b></td><td>各店に「週ブロック作成」を任せない＝現場の手間を最小化</td></tr>
-      <tr><td>CSV方式 vs 自動連携</td><td><b>まずCSV方式</b></td><td>Airレジは公式API無し。自動ログイン取得は2段階認証で不安定。CSVを出す数クリックを挟む方が堅牢</td></tr>
-      <tr><td>商品名の表記</td><td><b>全店共通の装飾除去</b>（店ごとの略記は廃止）</td><td>「マンゴー／MK」等の店ごとのブレを防ぐ。同じ商品はどの店でも同じ表記</td></tr>
-      <tr><td>商品の集計単位</td><td><b>メニュー名＋種別（サイズ）</b></td><td>サイズ違い（1本入/3本入）を分ける。実データと手入力TOP5の一致を検証済み</td></tr>
-    </tbody>
-  </table>
-  <div class="note"><b>検証（伊勢佐木店 6/8〜6/14）</b>：日別売上は営業日締め集計で<span class="em">7日とも完全一致</span>、商品別TOP5は<span class="em">売上金額が5位まで完全一致</span>（販売数のみ±1の手集計差）。</div>
-</section>
-
-<!-- 3 -->
-<section>
-  <h2><span class="no">3</span>必要なもの（前提）</h2>
-  <ul>
-    <li><b>Mac</b>（稜也さんの作業PC）＋ <b>Claude Code 導入済み</b>。</li>
-    <li><b>稜也さんのGoogleアカウント</b>で、各店の週次レポートシート（麻布／新宿／伊勢佐木／藤沢）に編集権限があること。</li>
-    <li><b>対象店のAirレジ</b>から会計明細CSVをエクスポートできること。</li>
-  </ul>
-  <div class="note">権限が無いシートがある場合は絵里に共有を依頼。<b>※確認事項</b>：稜也さんが4店ぶんのAirレジから会計明細を出せる体制か（出せない店は当面その店がCSVだけ用意 → 稜也さんがコマンド実行）。</div>
-</section>
-
-<!-- 4 -->
-<section>
-  <h2><span class="no">4</span>セットアップ手順（初回のみ）</h2>
-  <h3>4-1. Claude Code の確認</h3>
-  <p>「ターミナル」を開き <code>claude --version</code> でバージョンが出ればOK。</p>
-  <h3>4-2. 一式を配置</h3>
-  <p>絵里から受け取るフォルダ <code>airregi_weekly_setup_guide/</code> を作業フォルダに置く。中身：<code>SETUP_GUIDE.html</code>（この文書）／<code>build_store_weekly.py</code>（反映スクリプト）／<code>sheet_ids.json</code>（各店シートID）／<code>auth_setup.py</code>（認証）。</p>
-  <h3>4-3. 責任者アカウントでGoogle認証 <span class="badge">最重要</span></h3>
-  <ol>
-    <li><code>python3 auth_setup.py</code> を実行。</li>
-    <li>ブラウザで<b>稜也さんのGoogleアカウント</b>でログインし、Sheetsの編集を許可。</li>
-    <li><code>token.json</code> が保存され、以降は稜也さんの権限で各店シートを読み書きする。</li>
-  </ol>
-  <div class="note"><b>注意</b>：<code>token.json</code> は鍵情報。クラウドにアップロード・他人共有はしない。</div>
-  <h3>4-4. 動作確認（ドライラン）</h3>
-  <pre><code>python3 build_store_weekly.py --store 伊勢佐木 --week 6/8-6/14 --dry-run</code></pre>
-  <p><code>--dry-run</code> は<b>シートに書き込まず集計結果だけ表示</b>。妥当なら本番（外して実行）へ。</p>
-</section>
-
-<!-- 5 -->
-<section>
-  <h2><span class="no">5</span>毎週の運用（月曜昼まで）</h2>
-  <h3>① 会計明細CSVをエクスポート</h3>
-  <p>Airレジ管理画面 → 売上 → <b>会計明細</b>を<b>対象週（月〜日）</b>でCSV出力。Macの「ダウンロード」フォルダに保存される（操作はこれだけ）。</p>
-  <h3>② 反映コマンドを実行</h3>
-  <pre><code>python3 build_store_weekly.py --store all --week 6/8-6/14</code></pre>
-  <p>ダウンロードフォルダの会計明細CSVを自動で拾い、対象週の<b>日別売上・TOP5を各店シートに反映</b>。当該週ブロックが無ければ自動で作成してから書き込む。<code>--store 新宿</code> のように1店ずつでも可。</p>
-  <h3>③ あとは各店が気づき欄だけ記入</h3>
-  <p>数字は入った状態なので、各店長は<b>気づき・改善点・提案</b>だけを書く（火曜昼MTGまで）。</p>
-</section>
-
-<!-- 6 -->
-<section>
-  <h2><span class="no">6</span>仕様リファレンス</h2>
-  <h3>日別売上（会計明細から）</h3>
-  <ul>
-    <li>会計明細CSV（CP932）の取引行から、<b>合計＝売上</b>・<b>人数＝客数</b>を取得。</li>
-    <li><b>営業日締め</b>：会計時刻が朝（既定6時）より前の取引は<b>前日に計上</b>（深夜営業の日跨ぎ対応）。これで正規の日別売上と完全一致する。</li>
-    <li>週計・前週比・客単価・前日比は<b>シート側の数式</b>なので触らない。</li>
-  </ul>
-  <h3>商品別TOP5（会計明細から）</h3>
-  <ul>
-    <li>商品明細行を <b>メニュー名＋種別1</b> で集計（売上＝価格×数量／販売数＝数量、価格0の付帯行は除外）→ 売上降順TOP5。週判定も営業日締めで統一。</li>
-  </ul>
-  <h3>商品名の表示（全店共通）</h3>
-  <ul>
-    <li>集計は正式名のまま／<b>表示だけ装飾除去</b>（<code>【…】</code>・<code>（…）</code>・<code>新基準対応</code>・<code>510規格フルリキッド 等</code>）。例：<code>【新基準対応】510規格フルリキッド　陽キャ（GOODCHILL）</code> → <b>陽キャ</b>。</li>
-  </ul>
-  <div class="note"><b>重要</b>：集計キーは短縮しない（別カテゴリの同名商品が混ざる）。<b>短縮は表示専用</b>。</div>
-</section>
-
-<!-- 7 -->
-<section>
-  <h2><span class="no">7</span>トラブルシュート</h2>
-  <table>
-    <thead><tr><th style="width:38%">症状</th><th>対処</th></tr></thead>
-    <tbody>
-      <tr><td>日別売上が正規データと数日ずれる</td><td>営業日の締め時刻が店で違う可能性。<code>--cutoff 7</code> 等で締め時刻（時）を調整（既定6時。開店前の時刻なら同結果）</td></tr>
-      <tr><td>文字化けする</td><td>会計明細はCP932。スクリプトは自動対応。<b>DLしたCSVをそのまま使う</b>（Excelで保存し直さない）</td></tr>
-      <tr><td>権限エラー（403等）</td><td>稜也アカウントに対象シートの編集権が無い。絵里に共有依頼 → <code>python3 auth_setup.py</code> で再認証</td></tr>
-      <tr><td>TOP5が店の体感とずれる</td><td>サイズ違いの統合や返品の扱いを確認。販売数±1は手集計差で正常</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- 8 -->
-<section>
-  <h2><span class="no">8</span>引き継ぎ・連絡</h2>
-  <ul>
-    <li>仕様・スクリプトの不明点は絵里へ。<b>作業者は稜也さんに集約</b>（増やしすぎず、確実に動かせる状態を保つ）。</li>
-    <li>新しい店の追加は <code>sheet_ids.json</code> に1行足すだけ。</li>
-  </ul>
-  <h3>付録：完全自動（将来）について</h3>
-  <p>Airレジは公式APIが無いため完全自動化は「自動ログイン＋画面操作」になり、2段階認証・セッション維持が不安定（原付市場のLINE公式でも同種の壁で手動運用）。<b>まずCSV方式で運用を固め</b>、頻度・負荷を見てから判断するのが堅実。</p>
-</section>
-
+  <a class="card" href="doc-sharing-proposal.html">
+    <div class="t">社内ドキュメント共有のしくみ（ご相談）</div>
+    <div class="d">レポート・計画書・指南書をリンクで見やすく共有するしくみの提案・相談。</div>
+    <div class="go">開く →</div>
+  </a>
+  <a class="card" href="airregi-weekly-setup-guide.html">
+    <div class="t">Airレジ週次レポート 自動反映 設置指南書</div>
+    <div class="d">各店の週次レポートをAirレジ会計明細CSVから自動反映する仕組みの設置手順（稜也さん向け）。</div>
+    <div class="go">開く →</div>
+  </a>
 </main>
-<footer>CHILLAXY 直営店向け設置ドキュメント ／ Airレジ週次レポート自動反映 ／ 2026-06-23 作成・伊勢佐木店で検証済み（会計明細CSV1本／営業日締めで日別売上一致）</footer>
+<footer>CHILLAXY 社内共有ドキュメント ／ 公開でよい資料のみ掲載（機微情報は社内限定の手段で）</footer>
 </div>
 </body>
 </html>
