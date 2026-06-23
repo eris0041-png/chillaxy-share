@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>社内ドキュメント共有のしくみ — ご相談</title>
+<title>社内共有はHTMLリンクにしたい — ご相談</title>
 <style>
-  :root{ --navy:#091F42; --black:#242424; --gray:#D3D3D3; --white:#FFFFFF;
-    --pink-pale:#F9CFD1; --coral:#F5A1A1; --deep:#CC2055;
-    --A:24px; --A-half:12px; --A-q:6px; --A1_5:36px; --A2:48px; --line:#E2E5EA;
+  :root{ --navy:#091F42; --black:#242424; --white:#FFFFFF; --gray:#D3D3D3;
+    --pink-pale:#F9CFD1; --coral:#F5A1A1; --deep:#CC2055; --line:#E2E5EA;
+    --A:24px; --A-half:12px; --A-q:6px; --A1_5:36px; --A2:48px;
     --mono:"SFMono-Regular",Menlo,Consolas,monospace; }
   *{box-sizing:border-box;}
   body{ margin:0; background:#EDEFF2; color:var(--black);
@@ -16,7 +16,7 @@
   .page{ max-width:840px; margin:var(--A2) auto; background:var(--white); }
   header{ background:var(--navy); color:var(--white); padding:var(--A2) var(--A2) var(--A1_5); }
   header .kicker{ font-size:12px; letter-spacing:.18em; color:var(--coral); margin:0 0 var(--A-half); }
-  header h1{ font-size:25px; line-height:1.5; margin:0 0 var(--A-half); font-weight:800; }
+  header h1{ font-size:24px; line-height:1.5; margin:0 0 var(--A-half); font-weight:800; }
   header .meta{ font-size:13px; color:var(--gray); margin:0; }
   main{ padding:var(--A1_5) var(--A2) var(--A2); }
   section{ margin:0 0 var(--A1_5); }
@@ -36,7 +36,6 @@
   .note b{ color:var(--deep); }
   .try{ background:#F5F6F8; border-left:3px solid var(--deep); padding:var(--A-half) var(--A); margin:var(--A-half) 0; }
   a{ color:var(--deep); }
-  .ask{ counter-reset:q; }
   .ask .q{ padding:var(--A-half) 0; border-bottom:1px solid var(--line); }
   .ask .q:last-child{ border-bottom:none; }
   .ask .q b{ display:block; color:var(--navy); }
@@ -49,70 +48,69 @@
 <div class="page">
 <header>
   <p class="kicker">CHILLAXY ／ 社内提案・ご相談</p>
-  <h1>社内ドキュメント共有のしくみを<br>相談させてください</h1>
+  <h1>単発の社内共有を「HTMLリンク」にしたい<br>— やり方をご相談させてください</h1>
   <p class="meta">起案：絵里　／　2026-06-23　／　宛先：BOSS 各位</p>
 </header>
 <main>
 
 <section>
   <h2><span class="no">1</span>ご相談したいこと（主旨）</h2>
-  <p>レポート・計画書・指南書などの社内ドキュメントを、<b>見やすい形でリンク共有できるしくみ</b>を整えたいです。手段はこだわりません（HTMLでもNotion等でも）。<b>置き場所（プラットフォーム）と公開範囲のルール</b>を一緒に決めさせてください。</p>
+  <p>Claude Code導入指南書や、今回の週次レポート改善提案のような<b>単発の社内共有</b>を、<b>読みやすいHTMLのリンクで共有</b>したいです。やり方として <b>GitHub Pages</b> を試してみたのですが、<b>これで問題ないか／もっといい方法があるか／社内（CCN）に置いた方がよいか</b>を相談させてください。セキュリティや運用ルールはまだこれからです。</p>
 </section>
 
 <section>
-  <h2><span class="no">2</span>いま感じている課題</h2>
+  <h2><span class="no">2</span>いま「読みにくい」と感じていること</h2>
   <ul>
-    <li>資料をテキスト/PDF/口頭で共有 → <b>見づらい・Slackで流れる・どれが最新か分からない</b>。</li>
-    <li>更新するたびにファイルを再添付 → 版がばらつき、属人化する。</li>
-    <li>「他の人にも見てもらいたい報告書」を、手軽に・見やすく回せる場所がない。</li>
+    <li><b>Slackに長文テキスト</b> → 流れていくし読みにくい。<b>太字や絵文字の装飾が逆に読みにくく</b>、内容が伝わりにくい。</li>
+    <li><b>PDF</b> → 内容・使い勝手は良いが、<b>ページ分割の都合や、開く環境（スマホ等）によって読みにくさ</b>が出る。</li>
   </ul>
 </section>
 
 <section>
-  <h2><span class="no">3</span>やりたいこと</h2>
+  <h2><span class="no">3</span>HTMLが良いと感じた理由</h2>
   <ul>
-    <li>資料を<b>リンク1本で共有</b>（Slackに貼るだけ）。開けば見やすく、<b>常に最新</b>。</li>
-    <li>レポート・計画書・指南書・マニュアルが<b>1か所に集約</b>されて探しやすい。</li>
-    <li>公開でよいものと社内限定にすべきものを<b>ルールで線引き</b>。</li>
+    <li><b>出先でスマホで見ても、PCと同じように読みやすい</b>（画面サイズに自動で合う）。</li>
+    <li>リンク1本で共有でき、開けば<b>常に最新</b>。表・図・色分けもそのまま見える。</li>
   </ul>
+  <p>※この提案書自体も、まさにそのHTMLリンクで開いていただいています。スマホでも見やすいか試してみてください。</p>
 </section>
 
 <section>
-  <h2><span class="no">4</span>手段の比較（フラットに）</h2>
-  <table>
-    <thead><tr><th style="width:20%">手段</th><th>見やすいリンク共有</th><th>社内限定</th><th>つくりやすさ</th><th>コスト</th></tr></thead>
-    <tbody>
-      <tr><td><b>GitHub Pages</b></td><td class="ok">◎ HTMLそのまま表示</td><td class="mid">△ 公開向き（URL限定運用）</td><td class="ok">◎ Claudeで自動作成・即公開</td><td>無料</td></tr>
-      <tr><td><b>Notion</b></td><td class="ok">◎ ページをリンク共有</td><td class="ok">◎ ワークスペース権限で限定</td><td class="ok">◎ 書きやすい・DB/Wiki・コメント</td><td>無料〜</td></tr>
-      <tr><td><b>Cloudflare Pages＋Access</b></td><td class="ok">◎ HTML表示</td><td class="ok">◎ 社内メール限定が可</td><td class="mid">○ 初期設定あり</td><td>無料</td></tr>
-      <tr><td>Google Sites</td><td class="mid">○ 埋め込み手直し要</td><td class="ok">◎ ドメイン内限定</td><td class="mid">○</td><td>無料</td></tr>
-      <tr><td>Google Drive</td><td class="no">✕ HTMLはリンク表示不可（PDFのみ）</td><td class="ok">◎</td><td class="ok">◎</td><td>無料</td></tr>
-    </tbody>
-  </table>
-  <div class="note">ざっくり：<b>HTMLをそのまま活かす</b>なら GitHub Pages／Cloudflare、<b>ツールとして使い込む（Wiki的に）</b>なら Notion が候補です。どれも一長一短なので相談したいです。</div>
-</section>
-
-<section>
-  <h2><span class="no">5</span>試してみたこと</h2>
+  <h2><span class="no">4</span>試してみたこと</h2>
   <div class="try">
-    まず <b>GitHub Pages</b> で、Airレジ週次レポートの設置指南書をHTMLにしてリンク公開してみました。PDFより見やすく、リンクを貼るだけで共有できました。<br>
+    <b>GitHub Pages</b> で、Airレジ週次レポートの設置指南書とこの提案書をHTML公開してみました。<br>
     → <a href="airregi-weekly-setup-guide.html">Airレジ週次レポート 設置指南書（実例）</a>
   </div>
-  <p>※この提案書自体も、同じしくみ（HTML＋リンク共有）で開いていただいています。</p>
+  <div class="note"><b>確認できたこと</b>：今回の置き場所は「<b>GitHub上の公開Web</b>」です。＝<b>URLを知れば誰でも見られる</b>状態で、<b>CCN（社内のClaude Codeネットワーク）の中ではありません</b>。</div>
+</section>
+
+<section>
+  <h2><span class="no">5</span>手段の整理（私が調べた範囲）</h2>
+  <table>
+    <thead><tr><th style="width:22%">手段</th><th>スマホ/PCで読みやすい</th><th>社内限定にできる</th><th>すぐ使えるか</th></tr></thead>
+    <tbody>
+      <tr><td><b>GitHub Pages</b>（今回試作）</td><td class="ok">◎</td><td class="mid">△ 公開向き（URLを知る人のみ運用）</td><td class="ok">◎ もう動いている</td></tr>
+      <tr><td><b>Cloudflare Pages＋Access</b></td><td class="ok">◎</td><td class="ok">◎ 社内メール限定が可能</td><td class="mid">○ 初期設定が要る</td></tr>
+      <tr><td>Notion</td><td class="ok">◎</td><td class="ok">◎</td><td class="no">△ アカウントはあるが<b>全社員が使いこなせておらず研修が必須</b></td></tr>
+      <tr><td>CCN（Claude Codeネットワーク）</td><td class="no">✕ ブラウザ閲覧用ではない</td><td class="ok">◎ 社内クローズド</td><td class="mid">○ ノード間のファイル配布向き</td></tr>
+      <tr><td>PDF / Slackテキスト</td><td class="mid">△（上記の読みにくさ）</td><td class="ok">◎</td><td class="ok">◎</td></tr>
+    </tbody>
+  </table>
+  <div class="note">ざっくり：<b>「スマホでも読みやすいリンク共有」を満たすにはWeb公開（GitHub Pages か Cloudflare）が必要</b>です。CCNはファイル配布の仕組みでブラウザ閲覧には向かず、Notionは展開に研修が要るので今すぐは難しい、という整理です。</div>
 </section>
 
 <section>
   <h2><span class="no">6</span>決めさせていただきたいこと</h2>
   <div class="ask">
-    <div class="q"><b>1. 置き場所（プラットフォーム）</b>GitHub Pages／Notion／Cloudflare／その他、社内標準をどれにするか。</div>
-    <div class="q"><b>2. 公開範囲のルール</b>誰でも見てよいもの（マニュアル・指南書等）と、社内限定にすべき機微情報（給与・個人情報・未公開数字）の線引き。</div>
-    <div class="q"><b>3. 整備・運用の担当</b>インフラ・セキュリティ面を誰が見るか（ここは隆志さんに相談したいです）。</div>
+    <div class="q"><b>1. 置き場所はGitHub Pagesで問題ないか／もっといい案があるか</b>（公開でよい単発資料を、読みやすくリンク共有する用途）。</div>
+    <div class="q"><b>2. 公開でよいか／社内限定にすべきか</b>（今回のは公開Web。機微情報を載せるなら Cloudflare Access のような社内限定の仕組みが必要。CCNに置く選択肢もあるが、その場合ブラウザで見やすく開くには別途Web公開が要る）。</div>
+    <div class="q"><b>3. セキュリティ・運用ルール</b>（公開してよい資料の線引き、誰が整備・管理するか。ここは特に隆志さんに相談したいです）。</div>
   </div>
-  <p style="margin-top:var(--A-half)">まずは<b>公開で問題ないもの</b>からリンク共有を始め、機微情報用に<b>社内限定の仕組み</b>を別途用意する、という進め方を考えています。ご意見ください。</p>
+  <p style="margin-top:var(--A-half)">まずは<b>公開で問題ない単発資料（指南書・一般的な提案など）</b>からHTMLリンク共有を始めて、機微情報用に社内限定の仕組みを後から足す、という進め方を考えています。ご意見ください。</p>
 </section>
 
 </main>
-<footer>CHILLAXY 社内提案 ／ 社内ドキュメント共有のしくみ ／ 2026-06-23 起案：絵里</footer>
+<footer>CHILLAXY 社内提案 ／ 単発の社内共有をHTMLリンクに ／ 2026-06-23 起案：絵里</footer>
 </div>
 </body>
 </html>
